@@ -1,0 +1,22 @@
+package com.maxonsoft.plugin.keyboardmanager;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.RelativeLayout;
+
+/**
+ * Created by sungwon on 2016-06-02.
+ */
+public class checkableForResizing extends RelativeLayout {
+    public checkableForResizing(Context context) { super(context); }
+    public checkableForResizing(Context context, AttributeSet attrs) { super(context, attrs, 0); }
+    public checkableForResizing(Context context, AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
+
+    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        if(onSizeChanged!=null)onSizeChanged.run();
+        super.onSizeChanged(w,h,oldw,oldh);
+    }
+    private Runnable onSizeChanged = null;
+    public void setOnSizeChangedListener(Runnable r){onSizeChanged = r;}
+}
+//꼴랑 저 리스너 하나 만드려고 커스텀 레이아웃을 만듬.
